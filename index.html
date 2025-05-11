@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Feliz Día de las Madres</title>
+  <style>
+    /* Reinicio básico */
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%;
+    }
+    body {
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* === Pantalla de bienvenida === */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #f3e5f5, #fce4ec);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      z-index: 10;
+    }
+    #splash h2 {
+      color: #AD1457;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+    }
+    #enterBtn {
+      background: #AD1457;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #enterBtn:hover {
+      background: #880E4F;
+    }
+
+    /* === Contenido principal === */
+    #main {
+      display: none;
+      position: relative;
+      background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+    .container {
+      position: relative; z-index: 2;
+      margin: auto;
+      max-width: 90%;        /* Ocupa 90% en móviles */
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.85);
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      top: 5%;
+    }
+    h1 {
+      text-align: center;
+      color: #AD1457;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: justify;
+      margin-bottom: 1rem;
+    }
+
+    /* === Botón música flotante === */
+    #playButton {
+      position: fixed;
+      bottom: 15px; right: 15px;
+      background-color: #AD1457;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 3;
+    }
+    #playButton:hover {
+      background-color: #880E4F;
+    }
+
+    /* === Animaciones de pétalos/flor === */
+    .petal {
+      position: absolute;
+      top: -80px; width: 40px; opacity: 0.8;
+      animation: fall linear infinite;
+    }
+    .petal1 { left: 5%; animation-duration: 7s;      animation-delay: 0s; }
+    .petal2 { left: 50%; animation-duration: 9s;     animation-delay: 1.5s; }
+    .petal3 { left: 30%; animation-duration: 8.5s;   animation-delay: 0.8s; }
+    .petal4 { left: 75%; animation-duration: 6.5s;   animation-delay: 2s; }
+
+    @keyframes fall {
+      0%   { transform: translateY(-50px) rotate(0deg); opacity: 0.8; }
+      50%  { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* === Animaciones de mariachis === */
+    .mariachi {
+      position: absolute;
+      bottom: 0; width: 80px; opacity: 0;
+      animation: appear 1.5s forwards, sway 2.5s ease-in-out infinite alternate;
+    }
+    .m1 { left: 2%;  animation-delay: 1s; }
+    .m2 { right: 2%; animation-delay: 1.8s; }
+
+    @keyframes appear {
+      0%   { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes sway {
+      0%   { transform: translateY(0) rotate(-4deg); }
+      100% { transform: translateY(0) rotate(4deg); }
+    }
+
+    /* === Responsive typography === */
+    @media (min-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      p  { font-size: 1.1rem; }
+      #splash h2 { font-size: 2.4rem; }
+    }
+    @media (min-width: 900px) {
+      .container { max-width: 60%; }
+      #splash h2  { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de bienvenida -->
+  <div id="splash">
+    <h2>¡Hola, mamá!<br> Pulsa “Entrar” para tu sorpresa</h2>
+    <button id="enterBtn">Entrar</button>
+  </div>
+
+  <!-- Contenido principal oculto hasta interacción -->
+  <div id="main">
+    <!-- Pétalos y flores -->
+    <img src="ramo.png"   class="petal petal1" alt="">
+    <img src="rosas.png"  class="petal petal2" alt="">
+    <img src="corazon.png"class="petal petal3" alt="">
+    <img src="rosas.png"  class="petal petal4" alt="">
+
+    <!-- Mariachis animados -->
+    <img src="mariachi.png"  class="mariachi m1" alt="">
+    <img src="mariachis.png" class="mariachi m2" alt="">
+
+    <div class="container">
+      <h1>¡Feliz Día de las Madres!</h1>
+      <p>Hoy celebramos a la mujer más especial de mi vida: <strong>tú, mamá</strong>. 
+         Quiero aprovechar este día para decirte lo importante que eres para mí. 
+         Desde mis primeros pasos hasta las decisiones más difíciles que he tenido que tomar, 
+         siempre has estado a mi lado ofreciéndome tu amor incondicional y tu apoyo sin límites. 
+         No hay palabras suficientes para expresar la gratitud que siento por todo lo que has hecho y sigues haciendo por mí.</p>
+      <p>Cada recuerdo de mi infancia va acompañado de tu sonrisa cálida y tus abrazos reconfortantes. 
+         Tus enseñanzas y consejos me han guiado a lo largo del camino, 
+         dándome la fuerza y la confianza para enfrentar cada desafío. 
+         Admiro tu paciencia infinita, tu sabiduría y la forma en que encuentras la solución a cualquier problema. 
+         Eres mi ejemplo a seguir, mi inspiración y el pilar de nuestra familia.</p>
+      <p>En este Día de las Madres, quiero que sepas que te llevo en mi corazón en cada momento. 
+         Mereces todas las alegrías del mundo por tu dedicación y tu amor desinteresado. 
+         Gracias por ser mi mamá, por tu cariño que no conoce fronteras y por cada sacrificio que has hecho para verme feliz. 
+         <strong>¡Feliz Día de las Madres, con todo mi amor!</strong></p>
+    </div>
+
+    <!-- Botón de música -->
+    <button id="playButton">Reproducir Música</button>
+    <audio id="bgAudio" src="Quererla.mp3" loop preload="auto"></audio>
+  </div>
+
+  <script>
+    const splash = document.getElementById('splash');
+    const main   = document.getElementById('main');
+    const enter  = document.getElementById('enterBtn');
+    const btn    = document.getElementById('playButton');
+    const audio  = document.getElementById('bgAudio');
+
+    // Al pulsar "Entrar", oculto splash y muestro contenido
+    enter.addEventListener('click', () => {
+      splash.style.display = 'none';
+      main.style.display   = 'block';
+      // iniciar música tras interacción
+      audio.play().catch(()=>{});
+      btn.style.display = 'none';
+    });
+
+    // En caso de que no se inicie en la primera interacción táctil
+    document.addEventListener('touchstart', () => {
+      if (audio.paused) audio.play().catch(()=>{});
+    }, { once: true });
+  </script>
+</body>
+</html>
